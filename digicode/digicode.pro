@@ -17,15 +17,23 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     main.cpp \
-    digicode.cpp
+    digicode.cpp \
+    porte.cpp
 
 HEADERS += \
-    digicode.h
+    digicode.h \
+    porte.h
 
 FORMS += \
-    digicode.ui
+    digicode.ui \
+    porte.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    Porte.qrc
+
+DISTFILES +=

@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/img"/>
+    <qresource prefix="/">
+        <file>../images/porte_fermee.png</file>
+        <file>../images/porte_ouverte.png</file>
+    </qresource>
+</RCC>

@@ -6,6 +6,7 @@
 #include <QLineEdit>
 #include <QPushButton>
 #include <QMessageBox>
+#include "porte.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Digicode; }
@@ -27,5 +28,6 @@ private:
     QString code;
     QString codeSecret;
     QPushButton *touches[4][3];
+    Porte *laPorte;
 };
 #endif // DIGICODE_H

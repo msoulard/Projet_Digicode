@@ -5,9 +5,11 @@ Digicode::Digicode() :
     ui(new Ui::Digicode)
 {
     ui->setupUi(this);
+    codeSecret = "1234";
     int colonne=0, ligne=0;
     grille = new QGridLayout(this);
     afficheur = new QLineEdit(this);
+    laPorte = new Porte;
     afficheur->setReadOnly(true);
     afficheur->setAlignment(Qt::AlignRight);
     afficheur->setEchoMode(QLineEdit::Password);
@@ -30,6 +32,7 @@ Digicode::Digicode() :
         }
     }
     this->setLayout(grille);
+    //laPorte->verouiller();
 }
 
 Digicode::~Digicode()
@@ -41,13 +44,15 @@ Digicode::~Digicode()
 
 void Digicode::onQPushButtonClicked()
 {
-    QString val;
-    val = (QPushButton* (*)[3])(&((Digicode*)this)->Digicode::touches)->text();
-    if(val == '0' || val == '1' || val == '2' || val == '3' || val == '4' || val == '5' || val == '6' || val == '7' || val == '8' || val == '9'){
+    QPushButton *pbouton = static_cast<QPushButton *>(sender());
+    QString val = pbouton->text();
+    if(val != "On" && val != "Ok"){
         code = code + val;
+        afficheur->setText(val);
     }
     if(val == "Ok"){
         if(code == codeSecret){
+            laPorte->deverouiller();
             QMessageBox messageMarche;
             messageMarche.setText("La porte est dévérouillée");
             messageMarche.exec();
