@@ -1,29 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Digicode</class>
- <widget class="QWidget" name="Digicode">
+ <class>BoutonPoussoir</class>
+ <widget class="QWidget" name="BoutonPoussoir">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>400</width>
+    <height>300</height>
    </rect>
   </property>
-  <property name="font">
-   <font>
-    <pointsize>36</pointsize>
-   </font>
-  </property>
   <property name="windowTitle">
-   <string>Digicode</string>
+   <string>Form</string>
   </property>
   <widget class="QPushButton" name="pushButton_Poussoir">
    <property name="geometry">
     <rect>
-     <x>110</x>
-     <y>50</y>
-     <width>81</width>
+     <x>100</x>
+     <y>80</y>
+     <width>101</width>
      <height>71</height>
     </rect>
    </property>
@@ -32,7 +27,7 @@
    </property>
    <property name="icon">
     <iconset resource="Porte.qrc">
-     <normaloff>:/img/bouton_poussoir.jpg</normaloff>:/img/bouton_poussoir.jpg</iconset>
+     <normaloff>:/images/bouton_poussoir.jpg</normaloff>:/images/bouton_poussoir.jpg</iconset>
    </property>
    <property name="iconSize">
     <size>

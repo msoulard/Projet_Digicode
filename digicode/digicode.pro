@@ -16,15 +16,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    boutonpoussoir.cpp \
     main.cpp \
     digicode.cpp \
     porte.cpp
 
 HEADERS += \
+    boutonpoussoir.h \
     digicode.h \
     porte.h
 
 FORMS += \
+    boutonpoussoir.ui \
     digicode.ui \
     porte.ui
 

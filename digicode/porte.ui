@@ -11,29 +11,32 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Porte</string>
   </property>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>20</x>
      <y>20</y>
-     <width>118</width>
-     <height>179</height>
+     <width>251</width>
+     <height>251</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
      <widget class="QLabel" name="label_Image">
       <property name="text">
-       <string>TextLabel</string>
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>:/images/porte_fermee.png</pixmap>
       </property>
      </widget>
     </item>
     <item>
      <widget class="QLabel" name="label_EtatPorte">
       <property name="text">
-       <string>Porte est vérouillée</string>
+       <string>Porte est verrouillée</string>
       </property>
      </widget>
     </item>

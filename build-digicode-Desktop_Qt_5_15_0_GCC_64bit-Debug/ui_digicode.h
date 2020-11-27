@@ -10,7 +10,9 @@
 #define UI_DIGICODE_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -18,6 +20,7 @@ QT_BEGIN_NAMESPACE
 class Ui_Digicode
 {
 public:
+    QPushButton *pushButton_Poussoir;
 
     void setupUi(QWidget *Digicode)
     {
@@ -27,6 +30,13 @@ public:
         QFont font;
         font.setPointSize(36);
         Digicode->setFont(font);
+        pushButton_Poussoir = new QPushButton(Digicode);
+        pushButton_Poussoir->setObjectName(QString::fromUtf8("pushButton_Poussoir"));
+        pushButton_Poussoir->setGeometry(QRect(110, 50, 81, 71));
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/img/bouton_poussoir.jpg"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_Poussoir->setIcon(icon);
+        pushButton_Poussoir->setIconSize(QSize(100, 100));
 
         retranslateUi(Digicode);
 
@@ -36,6 +46,7 @@ public:
     void retranslateUi(QWidget *Digicode)
     {
         Digicode->setWindowTitle(QCoreApplication::translate("Digicode", "Digicode", nullptr));
+        pushButton_Poussoir->setText(QString());
     } // retranslateUi
 
 };

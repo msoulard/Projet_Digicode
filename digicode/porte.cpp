@@ -6,8 +6,8 @@ Porte::Porte(QWidget *parent) :
     ui(new Ui::Porte)
 {
     ui->setupUi(this);
-    imagePorte [0] = new QPixmap(":/../images/porte_fermee.png");
-    imagePorte [1] = new QPixmap(":/../images/porte_ouverte.png");
+    imagePorte [0] = new QPixmap(":/img/porte_fermee.png");
+    imagePorte [1] = new QPixmap(":/img/porte_ouverte.png");
 }
 
 Porte::~Porte()
@@ -19,11 +19,11 @@ Porte::~Porte()
 void Porte::deverouiller()
 {
     ui->label_Image->setPixmap(*imagePorte[1]);
-    ui->label_EtatPorte->setText("La porte est dévérouillée");
+    ui->label_EtatPorte->setText("La porte est déverrouillée");
 }
 
 void Porte::verouiller()
 {
     ui->label_Image->setPixmap(*imagePorte[0]);
-    ui->label_EtatPorte->setText("La porte est vérouillée");
+    ui->label_EtatPorte->setText("La porte est verrouillée");
 }

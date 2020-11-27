@@ -6,6 +6,7 @@
 #include <QLineEdit>
 #include <QPushButton>
 #include <QMessageBox>
+#include <QTimer>
 #include "porte.h"
 
 QT_BEGIN_NAMESPACE
@@ -21,6 +22,8 @@ public:
     ~Digicode();
 private slots:
     void onQPushButtonClicked();
+    void onTimerTempoGache_timeout();
+    void onTimerTempoVerrouillage_timeout();
 private:
     Ui::Digicode *ui;
     QGridLayout *grille;
@@ -29,5 +32,7 @@ private:
     QString codeSecret;
     QPushButton *touches[4][3];
     Porte *laPorte;
+    QTimer tempoGache;
+    QTimer tempoVerouillage;
 };
 #endif // DIGICODE_H

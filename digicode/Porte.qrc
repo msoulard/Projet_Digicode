@@ -1,7 +1,7 @@
 <RCC>
-    <qresource prefix="/img"/>
-    <qresource prefix="/">
-        <file>../images/porte_fermee.png</file>
-        <file>../images/porte_ouverte.png</file>
+    <qresource prefix="/img">
+        <file>bouton_poussoir.jpg</file>
+        <file>porte_fermee.png</file>
+        <file>porte_ouverte.png</file>
     </qresource>
 </RCC>
