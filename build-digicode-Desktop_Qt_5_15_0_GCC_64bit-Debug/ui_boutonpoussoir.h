@@ -20,20 +20,21 @@ QT_BEGIN_NAMESPACE
 class Ui_BoutonPoussoir
 {
 public:
-    QPushButton *pushButton;
+    QPushButton *pushButton_BoutonPoussoir;
 
     void setupUi(QWidget *BoutonPoussoir)
     {
         if (BoutonPoussoir->objectName().isEmpty())
             BoutonPoussoir->setObjectName(QString::fromUtf8("BoutonPoussoir"));
-        BoutonPoussoir->resize(400, 300);
-        pushButton = new QPushButton(BoutonPoussoir);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(50, 90, 101, 81));
+        BoutonPoussoir->resize(119, 101);
+        BoutonPoussoir->setMaximumSize(QSize(16777214, 16777215));
+        pushButton_BoutonPoussoir = new QPushButton(BoutonPoussoir);
+        pushButton_BoutonPoussoir->setObjectName(QString::fromUtf8("pushButton_BoutonPoussoir"));
+        pushButton_BoutonPoussoir->setGeometry(QRect(10, 10, 101, 81));
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/img/bouton_poussoir.jpg"), QSize(), QIcon::Normal, QIcon::Off);
-        pushButton->setIcon(icon);
-        pushButton->setIconSize(QSize(100, 100));
+        pushButton_BoutonPoussoir->setIcon(icon);
+        pushButton_BoutonPoussoir->setIconSize(QSize(100, 100));
 
         retranslateUi(BoutonPoussoir);
 
@@ -42,8 +43,8 @@ public:
 
     void retranslateUi(QWidget *BoutonPoussoir)
     {
-        BoutonPoussoir->setWindowTitle(QCoreApplication::translate("BoutonPoussoir", "Form", nullptr));
-        pushButton->setText(QString());
+        BoutonPoussoir->setWindowTitle(QCoreApplication::translate("BoutonPoussoir", "Bouton poussoir", nullptr));
+        pushButton_BoutonPoussoir->setText(QString());
     } // retranslateUi
 
 };

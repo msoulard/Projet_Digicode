@@ -6,18 +6,24 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>119</width>
+    <height>101</height>
    </rect>
   </property>
-  <property name="windowTitle">
-   <string>Form</string>
+  <property name="maximumSize">
+   <size>
+    <width>16777214</width>
+    <height>16777215</height>
+   </size>
   </property>
-  <widget class="QPushButton" name="pushButton">
+  <property name="windowTitle">
+   <string>Bouton poussoir</string>
+  </property>
+  <widget class="QPushButton" name="pushButton_BoutonPoussoir">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>90</y>
+     <x>10</x>
+     <y>10</y>
      <width>101</width>
      <height>81</height>
     </rect>

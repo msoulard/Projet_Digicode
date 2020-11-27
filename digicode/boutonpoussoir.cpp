@@ -6,6 +6,7 @@ BoutonPoussoir::BoutonPoussoir(QWidget *parent) :
     ui(new Ui::BoutonPoussoir)
 {
     ui->setupUi(this);
+    connect(ui->pushButton_BoutonPoussoir, &QPushButton::clicked, this, &BoutonPoussoir::on_pushButton_BoutonPoussoir_clicked);
 }
 
 BoutonPoussoir::~BoutonPoussoir()
@@ -13,7 +14,7 @@ BoutonPoussoir::~BoutonPoussoir()
     delete ui;
 }
 
-void BoutonPoussoir::on_pushButton_clicked()
+void BoutonPoussoir::on_pushButton_BoutonPoussoir_clicked()
 {
 
 }

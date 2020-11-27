@@ -6,25 +6,25 @@ Digicode::Digicode() :
 {
     ui->setupUi(this);
     codeSecret = "1234";
+    compteur = 0;
     int colonne=0, ligne=0;
     grille = new QGridLayout(this);
     afficheur = new QLineEdit(this);
     laPorte = new Porte;
     leBoutonPoussoir = new BoutonPoussoir;
     laPorte->show();
-    laPorte->move(20, 20);
+    laPorte->move(500, 500);
     leBoutonPoussoir->show();
-    leBoutonPoussoir->move(100, 100);
-    grille->setEnabled(true);
+    leBoutonPoussoir->move(700, 700);
     afficheur->setReadOnly(true);
     afficheur->setAlignment(Qt::AlignRight);
     afficheur->setEchoMode(QLineEdit::Password);
     afficheur->setMinimumHeight(80);
     grille->addWidget(afficheur,ligne,colonne,1,3);
-    // le temporisateur de gache
-    tempoGache.setSingleShot(true);
     //association du tempoGache à son signal et son slot
     connect(&tempoGache, &QTimer::timeout, this, &Digicode::onTimerTempoGache_timeout);
+    // le temporisateur de gache
+    tempoGache.setSingleShot(true);
     //association du tempoVerouillage à son signal et son slot
     connect(&tempoVerouillage, &QTimer::timeout, this, & Digicode::onTimerTempoVerrouillage_timeout);
     //association du boutonPoussoir avec son signal et son slot
@@ -40,7 +40,8 @@ Digicode::Digicode() :
             touches[l][c]->setText(TableDesSymboles[l][c]);
             touches[l][c]->setMaximumWidth(80);
             touches[l][c]->setMinimumHeight(80);
-            touches[l][c]->setStyleSheet("background_color = grey");;
+            touches[l][c]->setStyleSheet("background-color : gray;");
+            touches[l][c]->setEnabled(true);
             grille->addWidget(touches[l][c], l+1, c);
             connect(touches[l][c], &QPushButton::clicked, this, &Digicode::onQPushButtonClicked);
         }
@@ -61,7 +62,6 @@ Digicode::~Digicode()
 
 void Digicode::onQPushButtonClicked()
 {
-    int compteur = 0;
     //récupération de la valeur du bouton
     QPushButton *bouton = static_cast<QPushButton *>(sender());
     QString val = bouton->text();
@@ -75,21 +75,26 @@ void Digicode::onQPushButtonClicked()
         if(code == codeSecret){
             laPorte->deverouiller();
             tempoGache.start(3000);
-//            QMessageBox messageMarche;
-//            messageMarche.setText("La porte est dévérouillée");
-//            messageMarche.exec();
+            compteur = 0;
+            //            QMessageBox messageMarche;
+            //            messageMarche.setText("La porte est dévérouillée");
+            //            messageMarche.exec();
         }
         else{
-            QMessageBox messageMarche;
-            messageMarche.setText("Code Faux");
-            messageMarche.exec();
+//            QMessageBox messageMarche;
+//            messageMarche.setText("Code Faux");
+//            messageMarche.exec();
             code.clear();
             compteur++;
             //si 3 tentative erronées ont été faites
             if(compteur == 3){
-                tempoVerouillage.start(6000);
                 laPorte->verouiller();
-                grille->setEnabled(false);
+                for(int c = 0 ; c < 3 ; c++){
+                    for (int l = 0 ; l < 4 ; l++) {
+                        touches[l][c]->setEnabled(false);
+                    }
+                }
+                tempoVerouillage.start(6000);
             }
         }
     }
@@ -100,19 +105,21 @@ void Digicode::onQPushButtonClicked()
 }
 
 void Digicode::onTimerTempoGache_timeout()
-{
+{    
+    for(int c = 0 ; c < 3 ; c++){
+        for (int l = 0 ; l < 4 ; l++) {
+            touches[l][c]->setEnabled(true);
+        }
+    }
     tempoGache.stop();
-    laPorte->verouiller();
-
-//    QMessageBox messageMarche;
-//    messageMarche.setText("La porte est vérouillée");
-//    messageMarche.exec();
+    //    QMessageBox messageMarche;
+    //    messageMarche.setText("La porte est vérouillée");
+    //    messageMarche.exec();
 }
 
 void Digicode::onTimerTempoVerrouillage_timeout()
 {
     tempoVerouillage.stop();
-    grille->setEnabled(true);
 }
 
 void Digicode::onBoutonPoussoirActionne()

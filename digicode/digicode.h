@@ -37,5 +37,6 @@ private:
     QTimer tempoGache;
     QTimer tempoVerouillage;
     BoutonPoussoir *leBoutonPoussoir;
+    int compteur;
 };
 #endif // DIGICODE_H

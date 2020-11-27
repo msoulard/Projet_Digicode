@@ -29,10 +29,10 @@ public:
     {
         if (Porte->objectName().isEmpty())
             Porte->setObjectName(QString::fromUtf8("Porte"));
-        Porte->resize(400, 300);
+        Porte->resize(212, 212);
         layoutWidget = new QWidget(Porte);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(20, 20, 123, 179));
+        layoutWidget->setGeometry(QRect(20, 20, 171, 171));
         verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);

@@ -16,8 +16,9 @@ public:
     ~BoutonPoussoir();
 signals :
     void action();
+
 private slots:
-    void on_pushButton_clicked();
+    void on_pushButton_BoutonPoussoir_clicked();
 
 private:
     Ui::BoutonPoussoir *ui;
