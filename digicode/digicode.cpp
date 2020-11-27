@@ -10,8 +10,12 @@ Digicode::Digicode() :
     grille = new QGridLayout(this);
     afficheur = new QLineEdit(this);
     laPorte = new Porte;
+    leBoutonPoussoir = new BoutonPoussoir;
     laPorte->show();
     laPorte->move(20, 20);
+    leBoutonPoussoir->show();
+    leBoutonPoussoir->move(100, 100);
+    grille->setEnabled(true);
     afficheur->setReadOnly(true);
     afficheur->setAlignment(Qt::AlignRight);
     afficheur->setEchoMode(QLineEdit::Password);
@@ -23,6 +27,8 @@ Digicode::Digicode() :
     connect(&tempoGache, &QTimer::timeout, this, &Digicode::onTimerTempoGache_timeout);
     //association du tempoVerouillage à son signal et son slot
     connect(&tempoVerouillage, &QTimer::timeout, this, & Digicode::onTimerTempoVerrouillage_timeout);
+    //association du boutonPoussoir avec son signal et son slot
+    connect(leBoutonPoussoir, &BoutonPoussoir::actions, this, &Digicode::onBoutonPoussoirActionne);
     // Création du clavier
     QString TableDesSymboles[4][3] = {{"7","8","9"},{"4","5","6"},{"1","2","3"},{"On","0","Ok"}};
     //création des 12 touches
@@ -74,21 +80,22 @@ void Digicode::onQPushButtonClicked()
 //            messageMarche.exec();
         }
         else{
-//            QMessageBox messageMarche;
-//            messageMarche.setText("Code Faux");
-//            messageMarche.exec();
-            code = "";
+            QMessageBox messageMarche;
+            messageMarche.setText("Code Faux");
+            messageMarche.exec();
+            code.clear();
             compteur++;
             //si 3 tentative erronées ont été faites
             if(compteur == 3){
                 tempoVerouillage.start(6000);
+                laPorte->verouiller();
                 grille->setEnabled(false);
             }
         }
     }
     //si demande de correction du code
     if(val == "On"){
-        code = "";
+        code.clear();
     }
 }
 
@@ -106,5 +113,10 @@ void Digicode::onTimerTempoVerrouillage_timeout()
 {
     tempoVerouillage.stop();
     grille->setEnabled(true);
+}
+
+void Digicode::onBoutonPoussoirActionne()
+{
+    laPorte->deverouiller();
 }
 

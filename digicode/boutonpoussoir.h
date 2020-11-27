@@ -14,6 +14,10 @@ class BoutonPoussoir : public QWidget
 public:
     explicit BoutonPoussoir(QWidget *parent = nullptr);
     ~BoutonPoussoir();
+signals :
+    void action();
+private slots:
+    void on_pushButton_clicked();
 
 private:
     Ui::BoutonPoussoir *ui;

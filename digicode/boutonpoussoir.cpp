@@ -12,3 +12,8 @@ BoutonPoussoir::~BoutonPoussoir()
 {
     delete ui;
 }
+
+void BoutonPoussoir::on_pushButton_clicked()
+{
+
+}

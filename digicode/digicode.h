@@ -8,6 +8,7 @@
 #include <QMessageBox>
 #include <QTimer>
 #include "porte.h"
+#include "boutonpoussoir.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Digicode; }
@@ -24,6 +25,7 @@ private slots:
     void onQPushButtonClicked();
     void onTimerTempoGache_timeout();
     void onTimerTempoVerrouillage_timeout();
+    void onBoutonPoussoirActionne();
 private:
     Ui::Digicode *ui;
     QGridLayout *grille;
@@ -34,5 +36,6 @@ private:
     Porte *laPorte;
     QTimer tempoGache;
     QTimer tempoVerouillage;
+    BoutonPoussoir *leBoutonPoussoir;
 };
 #endif // DIGICODE_H
